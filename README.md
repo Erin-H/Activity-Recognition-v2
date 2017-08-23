@@ -1,17 +1,17 @@
 # Activity-Recognition-v2
 Multi-classification problem, BP Neural Network, matlab
 #
-### 核心代码1：自行实现
+### 1.核心代码1：自行实现
 
 * 预处理过程：
-'''matlab
+```matlab
 Fs = 100;                                           % 采样率
 Wc=2*10/Fs;                                         % 截止频率                              [b,a]=butter(5,Wc,'low');                        % 5阶巴特沃斯低通滤波器
 temp=filter(b,a,ac.sensor_readings);
-...
+```
 
 * 训练过程：
-'''matlab
+```matlab
 %% 网络参数的初始化
 numInputs = 57;                                   % 输入信号
 numHidden = 90;                                   % 隐层神经元数
@@ -60,11 +60,10 @@ for i=1:epoch
         b2=b2+lr*db2;
     end
 end
-
-'''
+```
 
 * 测试过程：
-'''matlab
+```matlab
 %% 测试阶段
 py=[];                                      % 实际预测输出
 for i=1:s2
@@ -76,11 +75,10 @@ for i=1:s2
     %输出层输出
     py=[py,w2*po'+b2];
 end
+```
 
-'''
-
-### 核心代码2：借助matlab神经网络工具实现
-'''matlab
+### 2.核心代码2：借助matlab神经网络工具实现
+```matlab
 %创建神经网络
 net = newff( minmax(traindata') , [100 12] , { 'logsig' 'purelin' } , 'traingdx' ) ; 
  
@@ -96,7 +94,6 @@ net = train( net, traindata' , train_output' ) ;
 
 %仿真，预测输出结果
 Y = sim( net , testdata' ) ;
+```
 
-'''
-
-### 识别结果见res.pdf
+### 3.识别结果见res.pdf
