@@ -95,5 +95,3 @@ net = train( net, traindata' , train_output' ) ;
 %仿真，预测输出结果
 Y = sim( net , testdata' ) ;
 ```
-
-### 3.识别结果见res.pdf
